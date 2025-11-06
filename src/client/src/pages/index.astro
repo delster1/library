@@ -1,0 +1,17 @@
+---
+const res = await fetch("http://localhost:8080/api/books");
+const books = await res.json();
+---
+<html>
+  <body class="p-8">
+    <h1 class="text-2xl font-bold mb-4">📚 My Library</h1>
+    <div class="grid grid-cols-3 gap-4">
+      {books.map(book => (
+        <a href={`/book/${book.id}`} class="block p-4 border rounded hover:bg-gray-100">
+          <h2>{book.title}</h2>
+          <p>{book.type.toUpperCase()}</p>
+        </a>
+      ))}
+    </div>
+  </body>
+</html>
